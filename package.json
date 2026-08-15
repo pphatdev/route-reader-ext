@@ -1,0 +1,99 @@
+{
+  "name": "route-reader-ext",
+  "displayName": "Route Reader for Node.js Frameworks",
+  "description": "Scan NestJS, Hono, Express, Fastify, or Elysia projects and list every HTTP route in a sidebar tree, grouped by module folder.",
+  "version": "0.1.0",
+  "publisher": "pphatdev",
+  "author": {
+    "name": "pphatdev"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "nodeAutoRoutes",
+          "title": "Node Auto Routes",
+          "icon": "$(list-tree)"
+        }
+      ]
+    },
+    "views": {
+      "nodeAutoRoutes": [
+        {
+          "id": "nodeAutoRoutes.routesView",
+          "name": "Routes"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "nodeAutoRoutes.refresh",
+        "title": "Refresh Routes",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "nodeAutoRoutes.openRoute",
+        "title": "Open Route"
+      },
+      {
+        "command": "nodeAutoRoutes.showOutput",
+        "title": "Node Auto Routes: Show Output"
+      },
+      {
+        "command": "nodeAutoRoutes.autoDetect",
+        "title": "Node Auto Routes: Auto-Detect Settings",
+        "icon": "$(sparkle)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "nodeAutoRoutes.autoDetect",
+          "when": "view == nodeAutoRoutes.routesView",
+          "group": "navigation@1"
+        },
+        {
+          "command": "nodeAutoRoutes.refresh",
+          "when": "view == nodeAutoRoutes.routesView",
+          "group": "navigation@2"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Node Auto Routes",
+      "properties": {
+        "nodeAutoRoutes.include": {
+          "type": "string",
+          "default": "**/*.{controller,module,route,routes}.ts",
+          "description": "Glob for files to scan for routes."
+        },
+        "nodeAutoRoutes.exclude": {
+          "type": "string",
+          "default": "**/{node_modules,dist,out,build}/**",
+          "description": "Glob for files to skip while scanning."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.3.0"
+  }
+}
