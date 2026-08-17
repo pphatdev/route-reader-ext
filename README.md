@@ -1,4 +1,6 @@
-<img width="1919" height="1028" alt="image" src="https://github.com/user-attachments/assets/72e8c4d0-35a5-4fbb-a380-c4bdc43e15ff" />
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/141f3233-ff45-4ef1-b5aa-d120a1d61977" controls muted autoplay playsinline></video>
+</p>
 
 
 # Route Reader Extension for Node.js Frameworks
